@@ -15,7 +15,7 @@ public class ProductProducer {
 
     private static Logger logger = LoggerFactory.getLogger(ProductProducer.class);
 
-    private static final String TOPIC = "demo-product";
+    private static final String TOPIC = "demo_product";
 
     @Resource
     private RocketMQTemplate rocketMQTemplate;
