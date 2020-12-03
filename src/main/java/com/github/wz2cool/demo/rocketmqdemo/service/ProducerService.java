@@ -1,7 +1,10 @@
 package com.github.wz2cool.demo.rocketmqdemo.service;
 
 import com.github.wz2cool.demo.rocketmqdemo.model.User;
+import org.apache.rocketmq.client.MQAdmin;
+import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.SendResult;
+import org.apache.rocketmq.common.MixAll;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +20,8 @@ public class ProducerService {
 
     @Resource
     private RocketMQTemplate rocketMQTemplate;
+    @Resource
+    private MQAdmin mqAdmin;
 
     @Value(value = "${boot.rocketmq.topic}")
     private String springTopic;
@@ -27,7 +32,9 @@ public class ProducerService {
     @Value(value = "${boot.rocketmq.tag}")
     private String tag;
 
-    public SendResult sendString(String message) {
+    public SendResult sendString(String message) throws MQClientException {
+
+
         // 发送 String 类型的消息
         // 调用 RocketMQTemplate 的 syncSend 方法
         SendResult sendResult = rocketMQTemplate.syncSend(springTopic + ":" + tag, message);
