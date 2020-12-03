@@ -16,6 +16,15 @@ public class ProductConsumer implements RocketMQListener<Product> {
 
     @Override
     public void onMessage(Product message) {
+
+        if ("Product_5".equalsIgnoreCase(message.getProductName())) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         logger.info("ThreadID: {}, receive product, productId: {}, productName: {} , create_time: {}",
                 Thread.currentThread().getId(),
                 message.getProductId(),
