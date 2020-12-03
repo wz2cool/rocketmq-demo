@@ -1,10 +1,10 @@
-package com.github.wz2cool.demo.rocketmqdemo;
+package com.github.wz2cool.demo.rocketmqproducer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RocketmqDemoApplicationTests {
+class RocketmqProducerApplicationTests {
 
     @Test
     void contextLoads() {
