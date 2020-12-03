@@ -6,6 +6,10 @@ public class ProductOrder {
     private String orderId;
     private String type;
 
+    public ProductOrder() {
+
+    }
+
     public ProductOrder(String orderId, String type) {
         this.orderId = orderId;
         this.type = type;
