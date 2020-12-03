@@ -1,7 +1,6 @@
 package com.github.wz2cool.demo.rocketmqproducer.service;
 
 import com.github.wz2cool.demo.rocketmqproducer.model.Product;
-import jdk.nashorn.internal.ir.annotations.Reference;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,7 +21,7 @@ public class ProductService {
         for (int i = 0; i < count; i++) {
             Product product = new Product();
             product.setProductId((long) i);
-            product.setFactoryId(i % FACTORY_COUNT);
+            product.setProductName("Product_" + i % FACTORY_COUNT);
             product.setCreateTime(new Timestamp(System.currentTimeMillis()));
             productList.add(product);
         }

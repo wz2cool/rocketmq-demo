@@ -25,7 +25,7 @@ public class ProductProducer {
             return;
         }
         for (Product product : products) {
-            SendResult sendResult = rocketMQTemplate.syncSendOrderly(TOPIC, product, product.getProductId() + "");
+            SendResult sendResult = rocketMQTemplate.syncSendOrderly(TOPIC, product, product.getProductName());
             logger.info("send demo-product topic result: {}", sendResult.toString());
         }
     }

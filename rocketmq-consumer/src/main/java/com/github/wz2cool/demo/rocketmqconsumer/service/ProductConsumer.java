@@ -16,6 +16,10 @@ public class ProductConsumer implements RocketMQListener<Product> {
 
     @Override
     public void onMessage(Product message) {
-        logger.info("receive product: {}, create_time: {}", message.getProductId(), message.getCreateTime());
+        logger.info("ThreadID: {}, receive product, productId: {}, productName: {} , create_time: {}",
+                Thread.currentThread().getId(),
+                message.getProductId(),
+                message.getProductName(),
+                message.getCreateTime());
     }
 }

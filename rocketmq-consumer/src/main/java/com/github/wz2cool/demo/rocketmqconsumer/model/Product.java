@@ -8,7 +8,7 @@ public class Product {
      * 十个工厂生产产品，1号产品到1号工厂，11 到1号
      */
     private Long productId;
-    private Integer factoryId;
+    private String productName;
     private Timestamp createTime;
 
     public Long getProductId() {
@@ -19,12 +19,12 @@ public class Product {
         this.productId = productId;
     }
 
-    public Integer getFactoryId() {
-        return factoryId;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setFactoryId(Integer factoryId) {
-        this.factoryId = factoryId;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public Timestamp getCreateTime() {
