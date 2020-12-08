@@ -1,8 +1,10 @@
 package com.github.wz2cool.demo.rocketmqconsumer.service;
 
+
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
+import org.apache.rocketmq.common.message.MessageExt;
 import org.apache.rocketmq.spring.annotation.ConsumeMode;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
@@ -33,9 +35,14 @@ public class ProductBatchConsumer implements RocketMQListener<String>, RocketMQP
         consumer.setConsumeThreadMax(1);
         consumer.setConsumeMessageBatchMaxSize(1000);
         consumer.setPullBatchSize(100);
-        consumer.registerMessageListener((MessageListenerConcurrently) (msgs, context) -> {
-            System.out.println("batchSize: " + msgs.size());
-            int result = atomicInteger.addAndGet(msgs.size());
+        consumer.registerMessageListener((MessageListenerConcurrently) (messages, context) -> {
+
+            for (MessageExt message : messages) {
+                System.out.println(new String(message.getBody()));
+            }
+
+            System.out.println("batchSize: " + messages.size());
+            int result = atomicInteger.addAndGet(messages.size());
             System.out.println("totalSize: " + result);
             return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
         });
