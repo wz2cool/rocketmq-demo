@@ -21,7 +21,7 @@ public class ProductService {
         for (int i = 0; i < count; i++) {
             Product product = new Product();
             product.setProductId((long) i);
-            product.setProductName("Product_" + i % FACTORY_COUNT);
+            product.setProductName("bath_Product_" + i % FACTORY_COUNT);
             product.setCreateTime(new Timestamp(System.currentTimeMillis()));
             productList.add(product);
         }
